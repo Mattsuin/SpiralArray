@@ -14,20 +14,25 @@
                 throw new ArgumentException("Invalid array size");
             }
 
-            int x = 0, y = 0;
             int stepCounter = 0;
             int rotationCounter = -1;
             int step = spiralSize - 1;
+            int[] spiralArray = new int[arraySize];
+            var manager = new IndexManager(spiralSize);
+
+            // First entry, excluded from loop
+            spiralArray[0] = array[0];
 
             for (int i = 1; i < arraySize; i++)
             {
-                // Do stuff first
-
+                var coords = manager.Next();
+                spiralArray[coords[0] + coords[1] * spiralSize] = array[i];
+                
                 stepCounter++;
                 if (stepCounter == step)
                 {
                     stepCounter = 0;
-                    // Rotate direction.
+                    manager.Rotate();
                     rotationCounter++;
                 }
 
@@ -37,9 +42,7 @@
                     step--;
                 }
             }
-
-            // Temp return statement
-            return array;
+            return spiralArray;
         }
 
         static void Main(string[] args)
@@ -48,7 +51,12 @@
              * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] the array [1,2,3,8,9,4,7,6,5] is returned.
              */
             int[] singleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-            Spiral(singleDimensionArray);
+            var spiral = Spiral(singleDimensionArray);
+            foreach ( var entry in spiral)
+            {
+                Console.Write($"{entry.ToString()}, ");
+            }
+
 
             /*
              * Given the two dimensional array [[1,2,3], the array [[1,2,3], is returned.
