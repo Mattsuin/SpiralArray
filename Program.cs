@@ -16,6 +16,7 @@
 
             int x = 0, y = 0;
             int stepCounter = 0;
+            int rotationCounter = -1;
             int step = spiralSize - 1;
 
             for (int i = 1; i < arraySize; i++)
@@ -27,6 +28,13 @@
                 {
                     stepCounter = 0;
                     // Rotate direction.
+                    rotationCounter++;
+                }
+
+                if (rotationCounter == 2)
+                {
+                    rotationCounter = 0;
+                    step--;
                 }
             }
 
