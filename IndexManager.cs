@@ -13,6 +13,10 @@
             this.spiralSize = spiralSize;
         }
 
+        /// <summary>
+        /// Method <c>Next</c> updates the internal values of <c>x</c> and <c>y</c> according to the current rotation
+        /// </summary>
+        /// <returns>The new indices, like <c>[x,y]</c></returns>
         public int[] Next()
         {
             x += coords[pointer][0];
@@ -20,7 +24,10 @@
 
             return [x, y];
         }
-
+        
+        /// <summary>
+        ///  Method <c>Rotate</c> updates the direction of following calls to <see cref="Next"/>.
+        /// </summary>
         public void Rotate()
         {
             // Keep the pointer within the size of the coords array
