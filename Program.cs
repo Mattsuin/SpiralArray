@@ -2,7 +2,7 @@
 {
     public class SpiralArray
     {
-        static int[] Spiral(int[] array, IndexManager.RotationDirection direction)
+        static int[] Spiral(int[] array, IndexManager.RotationDirection direction, IndexManager.StartPosition position)
         {
             int arraySize = array.Length;
             double testSpiral = Math.Sqrt(arraySize);
@@ -18,7 +18,7 @@
             int rotationCounter = -1;
             int step = spiralSize - 1;
             int[] spiralArray = new int[arraySize];
-            var manager = new IndexManager(spiralSize, direction);
+            var manager = new IndexManager(spiralSize, direction, position);
 
             // First entry, excluded from loop
             var coords = manager.First();
@@ -63,12 +63,13 @@
              * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] the array [1,2,3,8,9,4,7,6,5] is returned.
              */
             int[] singleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.Clockwise));
+            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.Clockwise, IndexManager.StartPosition.TopLeft));
 
             /*
-             * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] the array [1,8,7,2,9,6,3,4,5] is returned.
+             * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] 
+             * with an anti-clockwise rotation and starting position of bottomleft the array [7,6,5,8,9,4,1,2,3] is returned.
              */
-            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.AntiClockwise));
+            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.AntiClockwise, IndexManager.StartPosition.BottomLeft));
 
             /*
              * Given the two dimensional array [[1,2,3], the array [[1,2,3], is returned.

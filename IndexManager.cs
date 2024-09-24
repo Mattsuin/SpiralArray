@@ -23,12 +23,10 @@
             BottomRight     // [n,n] Where n is decided by the size of the spiral.
         }
 
-        public IndexManager(int spiralSize, RotationDirection direction) 
+        public IndexManager(int spiralSize, RotationDirection direction, StartPosition position) 
         { 
             this.spiralSize = spiralSize;
             this.direction = direction;
-
-            StartPosition pos = StartPosition.BottomRight;
 
             if (direction == RotationDirection.Clockwise)
             {
@@ -39,7 +37,7 @@
                 pointer = 1;
             }
 
-            switch (pos)
+            switch (position)
             {
                 case StartPosition.TopLeft:
                     x = 0;
