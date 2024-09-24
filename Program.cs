@@ -64,6 +64,10 @@
             int[] singleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
             PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.Clockwise));
 
+            /*
+             * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] the array [1,8,7,2,9,6,3,4,5] is returned.
+             */
+            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.AntiClockwise));
 
             /*
              * Given the two dimensional array [[1,2,3], the array [[1,2,3], is returned.
