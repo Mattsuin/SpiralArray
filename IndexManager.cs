@@ -74,7 +74,12 @@
 
             return [x, y];
         }
-        
+
+        public int[] First()
+        {
+            return [x, y];
+        }
+
         /// <summary>
         ///  Method <c>Rotate</c> updates the direction of following calls to <see cref="Next"/>.
         /// </summary>
