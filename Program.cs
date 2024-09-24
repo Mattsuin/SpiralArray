@@ -62,8 +62,7 @@
              * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] the array [1,2,3,8,9,4,7,6,5] is returned.
              */
             int[] singleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-            var spiral = Spiral(singleDimensionArray);
-            PrintArray(spiral);
+            PrintArray(Spiral(singleDimensionArray));
 
 
             /*
