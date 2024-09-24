@@ -75,6 +75,10 @@
             return [x, y];
         }
 
+        /// <summary>
+        /// Method <c>First</c> returns the initial indices.
+        /// </summary>
+        /// <returns>Initial indices, like <c>[x,y]</c></returns>
         public int[] First()
         {
             return [x, y];
