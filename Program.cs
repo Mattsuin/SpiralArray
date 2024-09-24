@@ -130,6 +130,7 @@
         static void Main(string[] args)
         {
             int[] singleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int[] largeSingleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
             int[,] multiDimensionalArray = {
                 {1, 2, 3},
                 {4, 5, 6},
@@ -161,6 +162,19 @@
              *                                  [7,8,9]]                          [7,8,1]].
              */
             PrintArray(Spiral(multiDimensionalArray, IndexManager.RotationDirection.AntiClockwise, IndexManager.StartPosition.BottomRight));
+
+            /*
+             * With Clockwise rotation, topleft starting position and is inverted,
+             * the given single-dimensional array [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+             * should return the array [16,15,14,13,5,4,3,12,6,1,2,11,7,8,9,10]
+             */
+
+            /*
+             * With Clockwise rotation and topleft starting position and is inverted,
+             * the given two dimensional array [[1,2,3], should return the array [[9,8,7],
+             *                                  [4,5,6],                          [2,1,6],
+             *                                  [7,8,9]]                          [3,4,5]].
+             */
         }
     }
 }
