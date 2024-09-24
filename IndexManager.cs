@@ -28,6 +28,8 @@
             this.spiralSize = spiralSize;
             this.direction = direction;
 
+            StartPosition pos = StartPosition.BottomRight;
+
             if (direction == RotationDirection.Clockwise)
             {
                 pointer = 0;
@@ -35,6 +37,29 @@
             else
             {
                 pointer = 1;
+            }
+
+            switch (pos)
+            {
+                case StartPosition.TopLeft:
+                    x = 0;
+                    y = 0;
+                    break;
+                case StartPosition.TopRight:
+                    x = spiralSize - 1;
+                    y = 0;
+                    pointer = (pointer + 1) % coords.Length;
+                    break;
+                case StartPosition.BottomLeft:
+                    x = 0;
+                    y = spiralSize - 1;
+                    pointer = (pointer + 3) % coords.Length;
+                    break;
+                case StartPosition.BottomRight:
+                    x = spiralSize - 1;
+                    y = spiralSize - 1;
+                    pointer = (pointer + 2) % coords.Length;
+                    break;
             }
         }
 
