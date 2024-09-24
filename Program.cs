@@ -45,17 +45,25 @@
             return spiralArray;
         }
 
-        static void Main(string[] args)
+        // Simple method to print a given array
+        private static void PrintArray(int[] array)
+        {
+            Console.Write("[");
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                Console.Write($"{array[i]},");
+            }
+            Console.WriteLine($"{array[array.Length - 1]}]");
+        }
+
+            static void Main(string[] args)
         {
             /*
              * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] the array [1,2,3,8,9,4,7,6,5] is returned.
              */
             int[] singleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
             var spiral = Spiral(singleDimensionArray);
-            foreach ( var entry in spiral)
-            {
-                Console.Write($"{entry.ToString()}, ");
-            }
+            PrintArray(spiral);
 
 
             /*
