@@ -46,6 +46,11 @@
             return spiralArray;
         }
 
+        static int[,] Spiral(int[,] array)
+        {
+            return array;
+        }
+
         // Simple method to print a given array
         private static void PrintArray(int[] array)
         {
