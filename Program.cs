@@ -2,7 +2,7 @@
 {
     public class SpiralArray
     {
-        static int[] Spiral(int[] array)
+        static int[] Spiral(int[] array, IndexManager.RotationDirection direction)
         {
             int arraySize = array.Length;
             double testSpiral = Math.Sqrt(arraySize);
@@ -18,7 +18,7 @@
             int rotationCounter = -1;
             int step = spiralSize - 1;
             int[] spiralArray = new int[arraySize];
-            var manager = new IndexManager(spiralSize);
+            var manager = new IndexManager(spiralSize, direction);
 
             // First entry, excluded from loop
             spiralArray[0] = array[0];
@@ -56,13 +56,13 @@
             Console.WriteLine($"{array[array.Length - 1]}]");
         }
 
-            static void Main(string[] args)
+        static void Main(string[] args)
         {
             /*
              * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] the array [1,2,3,8,9,4,7,6,5] is returned.
              */
             int[] singleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-            PrintArray(Spiral(singleDimensionArray));
+            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.Clockwise));
 
 
             /*

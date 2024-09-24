@@ -8,7 +8,13 @@
         private int y = 0;
         private readonly int spiralSize;
 
-        public IndexManager(int spiralSize) 
+        public enum RotationDirection
+        {
+            Clockwise,
+            AntiClockwise
+        }
+
+        public IndexManager(int spiralSize, RotationDirection direction) 
         { 
             this.spiralSize = spiralSize;
         }
