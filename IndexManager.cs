@@ -15,6 +15,14 @@
             AntiClockwise
         }
 
+        public enum StartPosition
+        {
+            TopLeft,        // [0,0]
+            TopRight,       // [n,0]
+            BottomLeft,     // [0,n]
+            BottomRight     // [n,n] Where n is decided by the size of the spiral.
+        }
+
         public IndexManager(int spiralSize, RotationDirection direction) 
         { 
             this.spiralSize = spiralSize;
