@@ -51,7 +51,7 @@
             return array;
         }
 
-        // Simple method to print a given array
+        // Simple method to print a given single-dimensional array
         private static void PrintArray(int[] array)
         {
             Console.Write("[");
@@ -60,6 +60,23 @@
                 Console.Write($"{array[i]},");
             }
             Console.WriteLine($"{array[array.Length - 1]}]");
+        }
+
+        // Simple method to print a given two dimensional array
+        private static void PrintArray(int[,] array)
+        {
+            Console.Write("[");
+            for(int i = 0; i < array.GetLength(0); i++)
+            {
+                Console.Write("[");
+                for(int j = 0; j < array.GetLength(1) - 1; j++)
+                {
+                    Console.Write($"{array[i, j]},");
+                }
+                var end = (i == array.GetLength(0) - 1) ? "]]" : "]";
+                Console.WriteLine($"{array[i, array.GetLength(1) - 1]}{end}");
+                Console.Write(" ");
+            }
         }
 
         static void Main(string[] args)
@@ -81,6 +98,11 @@
              *                                  [4,5,6],            [8,9,4],
              *                                  [7,8,9]]            [7,6,5]
              */
+            int[,] multiDimensionalArray = {
+                {1, 2, 3 },
+                {4, 5, 6},
+                {7, 8, 9}};
+            PrintArray(multiDimensionalArray);
         }
     }
 }
