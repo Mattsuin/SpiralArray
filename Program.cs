@@ -46,9 +46,56 @@
             return spiralArray;
         }
 
-        static int[,] Spiral(int[,] array)
+        static int[,] Spiral(int[,] array, IndexManager.RotationDirection direction, IndexManager.StartPosition position)
         {
-            return array;
+            int arrayWidth = array.GetLength(0);
+            int arrayHeight = array.GetLength(1);
+
+            // Check if array can form a square with equal sides.
+            if (arrayHeight != arrayWidth)
+            {
+                throw new ArgumentException("Invalid array size");
+            }
+
+            int stepCounter = 0;
+            int rotationCounter = -1;
+            int step = arrayWidth - 1;
+
+            int[,] spiralArray = new int[arrayWidth, arrayHeight];
+            var manager = new IndexManager(arrayWidth, direction, position);
+
+            int[] coords;
+
+            for (int i = 0; i < arrayWidth; i++)
+            {
+                for (int j = 0; j < arrayHeight; j++)
+                {
+                    if (i == 0 && j == 0)
+                    {
+                        // First entry
+                        coords = manager.First();
+                        spiralArray[coords[0], coords[1]] = array[0, 0];
+                        continue;
+                    }
+                    coords = manager.Next();
+                    spiralArray[coords[1],coords[0]] = array[i,j];
+
+                    stepCounter++;
+                    if (stepCounter == step)
+                    {
+                        stepCounter = 0;
+                        manager.Rotate();
+                        rotationCounter++;
+                    }
+
+                    if (rotationCounter == 2)
+                    {
+                        rotationCounter = 0;
+                        step--;
+                    }
+                }   
+            }
+            return spiralArray;
         }
 
         // Simple method to print a given single-dimensional array
@@ -59,7 +106,7 @@
             {
                 Console.Write($"{array[i]},");
             }
-            Console.WriteLine($"{array[array.Length - 1]}]");
+            Console.WriteLine($"{array[array.Length - 1]}]\n");
         }
 
         // Simple method to print a given two dimensional array
@@ -77,6 +124,7 @@
                 Console.WriteLine($"{array[i, array.GetLength(1) - 1]}{end}");
                 Console.Write(" ");
             }
+            Console.WriteLine("");
         }
 
         static void Main(string[] args)
@@ -99,10 +147,11 @@
              *                                  [7,8,9]]            [7,6,5]
              */
             int[,] multiDimensionalArray = {
-                {1, 2, 3 },
+                {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}};
-            PrintArray(multiDimensionalArray);
+            PrintArray(Spiral(multiDimensionalArray, IndexManager.RotationDirection.Clockwise, IndexManager.StartPosition.TopLeft));
+            PrintArray(Spiral(multiDimensionalArray, IndexManager.RotationDirection.AntiClockwise, IndexManager.StartPosition.BottomRight));
         }
     }
 }
