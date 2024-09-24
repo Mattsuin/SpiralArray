@@ -129,28 +129,37 @@
 
         static void Main(string[] args)
         {
-            /*
-             * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] the array [1,2,3,8,9,4,7,6,5] is returned.
-             */
-            int[] singleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.Clockwise, IndexManager.StartPosition.TopLeft));
-
-            /*
-             * Given the single-dimensional array [1,2,3,4,5,6,7,8,9] 
-             * with an anti-clockwise rotation and starting position of bottomleft the array [7,6,5,8,9,4,1,2,3] is returned.
-             */
-            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.AntiClockwise, IndexManager.StartPosition.BottomLeft));
-
-            /*
-             * Given the two dimensional array [[1,2,3], the array [[1,2,3], is returned.
-             *                                  [4,5,6],            [8,9,4],
-             *                                  [7,8,9]]            [7,6,5]
-             */
+            int[] singleDimensionArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             int[,] multiDimensionalArray = {
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}};
+            /*
+             * With Clockwise rotation and topleft starting position,
+             * the given single-dimensional array [1,2,3,4,5,6,7,8,9] should return the array [1,2,3,8,9,4,7,6,5].
+             */
+            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.Clockwise, IndexManager.StartPosition.TopLeft));
+
+            /*
+             * With Anti-Clockwise rotation and bottomleft starting position,
+             * the given single-dimensional array [1,2,3,4,5,6,7,8,9] should return the array [7,6,5,8,9,4,1,2,3].
+             */
+            PrintArray(Spiral(singleDimensionArray, IndexManager.RotationDirection.AntiClockwise, IndexManager.StartPosition.BottomLeft));
+
+            /*
+             * With Clockwise rotation and topleft starting position,
+             * the given two dimensional array [[1,2,3], should return the array [[1,2,3],
+             *                                  [4,5,6],                          [8,9,4],
+             *                                  [7,8,9]]                          [7,6,5]].
+             */
             PrintArray(Spiral(multiDimensionalArray, IndexManager.RotationDirection.Clockwise, IndexManager.StartPosition.TopLeft));
+
+            /* 
+             * With Anti-Clockwise rotation and bottomright starting position,
+             * the given two dimensional array [[1,2,3], should return the array [[5,4,3],
+             *                                  [4,5,6],                          [6,9,2],
+             *                                  [7,8,9]]                          [7,8,1]].
+             */
             PrintArray(Spiral(multiDimensionalArray, IndexManager.RotationDirection.AntiClockwise, IndexManager.StartPosition.BottomRight));
         }
     }
