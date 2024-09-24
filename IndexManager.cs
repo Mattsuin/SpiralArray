@@ -23,6 +23,13 @@
             BottomRight     // [n,n] Where n is decided by the size of the spiral.
         }
 
+        /// <summary>
+        /// Constructor <c>IndexManager</c> creates an instance that provides indices for creating the spiral.
+        /// The indicies are based on the provided paramaters.
+        /// </summary>
+        /// <param name="spiralSize">The size of the spiral</param>
+        /// <param name="direction">The rotation of the spiral</param>
+        /// <param name="position">The starting position of the spiral</param>
         public IndexManager(int spiralSize, RotationDirection direction, StartPosition position) 
         { 
             this.spiralSize = spiralSize;
