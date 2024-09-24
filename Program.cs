@@ -21,11 +21,12 @@
             var manager = new IndexManager(spiralSize, direction);
 
             // First entry, excluded from loop
-            spiralArray[0] = array[0];
+            var coords = manager.First();
+            spiralArray[coords[0] + coords[1] * spiralSize] = array[0];
 
             for (int i = 1; i < arraySize; i++)
             {
-                var coords = manager.Next();
+                coords = manager.Next();
                 spiralArray[coords[0] + coords[1] * spiralSize] = array[i];
                 
                 stepCounter++;
