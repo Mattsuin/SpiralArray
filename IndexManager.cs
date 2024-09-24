@@ -3,10 +3,11 @@
     public class IndexManager
     {
         private int[][] coords = { [1, 0], [0, 1], [-1, 0], [0, -1] };
-        private int pointer = 0;
+        private int pointer;
         private int x = 0;
         private int y = 0;
         private readonly int spiralSize;
+        private readonly RotationDirection direction;
 
         public enum RotationDirection
         {
@@ -17,6 +18,16 @@
         public IndexManager(int spiralSize, RotationDirection direction) 
         { 
             this.spiralSize = spiralSize;
+            this.direction = direction;
+
+            if (direction == RotationDirection.Clockwise)
+            {
+                pointer = 0;
+            }
+            else
+            {
+                pointer = 1;
+            }
         }
 
         /// <summary>
@@ -36,11 +47,22 @@
         /// </summary>
         public void Rotate()
         {
+            if (direction == RotationDirection.Clockwise)
+            {
+                pointer += 1;
+            }
+            else
+            {
+                pointer -= 1;
+            }
             // Keep the pointer within the size of the coords array
-            pointer += 1;
             if (pointer == coords.Length)
             {
                 pointer = 0;
+            }
+            else if (pointer < 0)
+            {
+                pointer = 3;
             }
         }
     }
