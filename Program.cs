@@ -53,7 +53,7 @@
             return spiralArray;
         }
 
-        static int[,] Spiral(int[,] array, IndexManager.RotationDirection direction, IndexManager.StartPosition position)
+        static int[,] Spiral(int[,] array, IndexManager.RotationDirection direction, IndexManager.StartPosition position, bool inverted = false)
         {
             int arrayWidth = array.GetLength(0);
             int arrayHeight = array.GetLength(1);
@@ -71,6 +71,12 @@
             int[,] spiralArray = new int[arrayWidth, arrayHeight];
             var manager = new IndexManager(arrayWidth, direction, position);
 
+            int startIndex = 0;
+            if (inverted)
+            {
+                startIndex = arrayWidth - 1;
+            }
+
             int[] coords;
 
             for (int i = 0; i < arrayWidth; i++)
@@ -81,11 +87,13 @@
                     {
                         // First entry
                         coords = manager.First();
-                        spiralArray[coords[0], coords[1]] = array[0, 0];
+                        spiralArray[coords[0], coords[1]] = array[startIndex, startIndex];
                         continue;
                     }
                     coords = manager.Next();
-                    spiralArray[coords[1],coords[0]] = array[i,j];
+                    int selectionX = Math.Abs(startIndex - i);
+                    int selectionY = Math.Abs(startIndex - j);
+                    spiralArray[coords[1],coords[0]] = array[selectionX,selectionY];
 
                     stepCounter++;
                     if (stepCounter == step)
@@ -183,6 +191,7 @@
              *                                  [4,5,6],                          [2,1,6],
              *                                  [7,8,9]]                          [3,4,5]].
              */
+            PrintArray(Spiral(multiDimensionalArray, IndexManager.RotationDirection.Clockwise, IndexManager.StartPosition.TopLeft, true));
         }
     }
 }
